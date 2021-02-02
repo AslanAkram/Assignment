@@ -1,0 +1,84 @@
+﻿@model  Assignment.ViewModels.Upload_Images
+@{
+    ViewBag.Title = "Home Page";
+}
+<html>
+<body style="background-color:darkcyan">
+    <br />
+    <br />
+    <div class="jumbotron">
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="card" style="margin-left:100px">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="text-uppercase text-center">Send file in social Media</h3>
+                    </div>
+                    <div class="card-body">
+
+                        @using (Html.BeginForm("index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <h4 class="bg-success">@ViewBag.Image</h4>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Title</label>
+
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Message</label>
+
+                                        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @*<div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Sender Email</label>
+
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Upload File</label>
+                                        <input type="file" name="fileUploader" id="fileUploader" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <input type="submit" value="Send" class="btn btn-sm btn-primary text-uppercase rounded-0" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+</body>
+</html>
+    
+
